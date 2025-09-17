@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User & Verification Management - PropertyHub Admin</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fpropertyhu7706back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background">
+    <!-- Admin Navigation Header -->
+    <nav class="bg-surface shadow-md sticky top-0 z-50 border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="../pages/homepage.html" class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                        </svg>
+                        <span class="text-xl font-bold text-primary">PropertyHub</span>
+                    </a>
+                    <span class="ml-4 px-3 py-1 bg-error-100 text-error-600 text-sm font-medium rounded-full">ADMIN</span>
+                </div>
+                
+                <!-- Admin Navigation -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="user_verification_management.html" class="text-primary font-semibold">User Management</a>
+                    <a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-smooth">Property Approvals</a>
+                    <a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-smooth">Reports</a>
+                    <a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-smooth">Settings</a>
+                    <div class="flex items-center space-x-2">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Admin Profile" class="w-8 h-8 rounded-full object-cover" />
+                        <span class="text-sm font-medium">Admin User</span>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-admin-menu-btn" class="text-text-secondary hover:text-primary">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-admin-menu" class="hidden md:hidden bg-surface border-t border-border">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="user_verification_management.html" class="block px-3 py-2 text-primary font-semibold">User Management</a>
+                <a href="javascript:void(0)" class="block px-3 py-2 text-text-secondary hover:text-primary">Property Approvals</a>
+                <a href="javascript:void(0)" class="block px-3 py-2 text-text-secondary hover:text-primary">Reports</a>
+                <a href="javascript:void(0)" class="block px-3 py-2 text-text-secondary hover:text-primary">Settings</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-surface border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
+                <div>
+                    <h1 class="text-3xl font-bold text-text-primary">User & Verification Management</h1>
+                    <p class="text-text-secondary mt-2">Comprehensive oversight of PropertyHub's verified community</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button class="btn-outline text-sm">Export Data</button>
+                    <button class="btn-primary text-sm">Send Notifications</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Stats -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Total Users -->
+            <div class="card p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-primary-100">
+                        <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-text-secondary">Total Users</p>
+                        <p class="text-2xl font-bold text-text-primary">24,847</p>
+                        <p class="text-sm text-success">+12.3% this month</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pending Verifications -->
+            <div class="card p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-warning-100">
+                        <svg class="w-6 h-6 text-warning" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-text-secondary">Pending Verifications</p>
+                        <p class="text-2xl font-bold text-text-primary">342</p>
+                        <p class="text-sm text-warning">Requires attention</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Safety Reports -->
+            <div class="card p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-error-100">
+                        <svg class="w-6 h-6 text-error" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-text-secondary">Safety Reports</p>
+                        <p class="text-2xl font-bold text-text-primary">27</p>
+                        <p class="text-sm text-error">Urgent review needed</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Community Health -->
+            <div class="card p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-success-100">
+                        <svg class="w-6 h-6 text-success" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-text-secondary">Community Health</p>
+                        <p class="text-2xl font-bold text-text-primary">94.2%</p>
+                        <p class="text-sm text-success">Excellent</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column: User Management & Verification -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- User Search & Filter -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-text-primary mb-6">User Management</h2>
+                    
+                    <!-- Search and Filters -->
+                    <div class="flex flex-col md:flex-row gap-4 mb-6">
+                        <div class="flex-1">
+                            <input type="text" placeholder="Search users by name, email, or ID..." class="input-field" id="userSearch" />
+                        </div>
+                        <select class="input-field md:w-48" id="userTypeFilter">
+                            <option value>All User Types</option>
+                            <option value="tenant">Tenants</option>
+                            <option value="landlord">Landlords</option>
+                            <option value="student">Students</option>
+                        </select>
+                        <select class="input-field md:w-48" id="verificationStatus">
+                            <option value>All Statuses</option>
+                            <option value="verified">Verified</option>
+                            <option value="pending">Pending</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="unverified">Unverified</option>
+                        </select>
+                    </div>
+
+                    <!-- User List -->
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-border">
+                            <thead class="bg-background">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">User</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Trust Score</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Activity</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-surface divide-y divide-border" id="userTableBody">
+                                <!-- User Row 1 -->
+                                <tr class="hover:bg-background transition-colors">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <img class="h-10 w-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt />
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-text-primary">Sarah Chen</div>
+                                                <div class="text-sm text-text-secondary">sarah.chen@email.com</div>
+                                                <div class="text-xs text-text-muted">ID: USR-2024-001</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex flex-col space-y-1">
+                                            <span class="verification-badge bg-success-100 text-success-700">
+                                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                </svg>
+                                                Verified
+                                            </span>
+                                            <span class="text-xs text-text-muted">Student</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="text-sm font-medium text-text-primary">95</div>
+                                            <div class="ml-2 flex-1 bg-gray-200 rounded-full h-2 w-16">
+                                                <div class="bg-success h-2 rounded-full" style="width: 95%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        <div>Last active: 2 hours ago</div>
+                                        <div class="text-xs text-text-muted">3 listings viewed</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                                        <button class="text-primary hover:text-primary-700 transition-colors">View</button>
+                                        <button class="text-text-secondary hover:text-primary transition-colors">Edit</button>
+                                        <button class="text-error hover:text-error-600 transition-colors">Suspend</button>
+                                    </td>
+                                </tr>
+
+                                <!-- User Row 2 -->
+                                <tr class="hover:bg-background transition-colors">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <img class="h-10 w-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt />
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-text-primary">Marcus Johnson</div>
+                                                <div class="text-sm text-text-secondary">marcus.j@email.com</div>
+                                                <div class="text-xs text-text-muted">ID: USR-2024-002</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex flex-col space-y-1">
+                                            <span class="verification-badge bg-warning-100 text-warning-700">
+                                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                                </svg>
+                                                Pending
+                                            </span>
+                                            <span class="text-xs text-text-muted">Landlord</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="text-sm font-medium text-text-primary">78</div>
+                                            <div class="ml-2 flex-1 bg-gray-200 rounded-full h-2 w-16">
+                                                <div class="bg-accent h-2 rounded-full" style="width: 78%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        <div>Last active: 1 day ago</div>
+                                        <div class="text-xs text-text-muted">2 properties listed</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                                        <button class="text-primary hover:text-primary-700 transition-colors">View</button>
+                                        <button class="text-secondary hover:text-secondary-700 transition-colors">Verify</button>
+                                        <button class="text-error hover:text-error-600 transition-colors">Reject</button>
+                                    </td>
+                                </tr>
+
+                                <!-- User Row 3 -->
+                                <tr class="hover:bg-background transition-colors">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <img class="h-10 w-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt />
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-text-primary">Emily Rodriguez</div>
+                                                <div class="text-sm text-text-secondary">emily.rodriguez@email.com</div>
+                                                <div class="text-xs text-text-muted">ID: USR-2024-003</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex flex-col space-y-1">
+                                            <span class="verification-badge bg-error-100 text-error-700">
+                                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M6 18L18 6M6 6l12 12"/>
+                                                </svg>
+                                                Flagged
+                                            </span>
+                                            <span class="text-xs text-text-muted">Tenant</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="text-sm font-medium text-text-primary">42</div>
+                                            <div class="ml-2 flex-1 bg-gray-200 rounded-full h-2 w-16">
+                                                <div class="bg-error h-2 rounded-full" style="width: 42%"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                        <div>Last active: 3 days ago</div>
+                                        <div class="text-xs text-error">2 reports filed</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                                        <button class="text-primary hover:text-primary-700 transition-colors">Review</button>
+                                        <button class="text-warning hover:text-warning-600 transition-colors">Investigate</button>
+                                        <button class="text-error hover:text-error-600 transition-colors">Suspend</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="flex items-center justify-between mt-6">
+                        <div class="text-sm text-text-secondary">
+                            Showing 1 to 3 of 24,847 users
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="px-3 py-1 border border-border rounded hover:bg-background transition-colors">Previous</button>
+                            <button class="px-3 py-1 bg-primary text-white rounded">1</button>
+                            <button class="px-3 py-1 border border-border rounded hover:bg-background transition-colors">2</button>
+                            <button class="px-3 py-1 border border-border rounded hover:bg-background transition-colors">3</button>
+                            <span class="px-3 py-1">...</span>
+                            <button class="px-3 py-1 border border-border rounded hover:bg-background transition-colors">847</button>
+                            <button class="px-3 py-1 border border-border rounded hover:bg-background transition-colors">Next</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roommate Post Moderation -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-text-primary mb-6">Roommate Post Moderation</h2>
+                    
+                    <!-- Moderation Queue -->
+                    <div class="space-y-4">
+                        <!-- Roommate Post 1 -->
+                        <div class="border border-border rounded-lg p-4 hover:shadow-md transition-all">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User" class="w-10 h-10 rounded-full object-cover" />
+                                    <div>
+                                        <h4 class="font-medium text-text-primary">Looking for Clean & Quiet Roommate</h4>
+                                        <p class="text-sm text-text-secondary">by Sarah Chen • 2 hours ago</p>
+                                    </div>
+                                </div>
+                                <span class="badge-warning">Pending Review</span>
+                            </div>
+                            
+                            <p class="text-text-secondary mb-4 text-sm">
+                                "Graduate student looking for a roommate to share a 2BR apartment near campus. I'm clean, quiet, and focused on studies. Looking for someone with similar habits..."
+                            </p>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-4 text-sm text-text-secondary">
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                        </svg>
+                                        University District
+                                    </span>
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 5.5 15.5 8zM12 13.5L8.5 16 12 18.5 15.5 16 12 13.5z"/>
+                                        </svg>
+                                        $950/month
+                                    </span>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="btn-secondary text-sm py-2">Approve</button>
+                                    <button class="text-error hover:text-error-600 transition-colors text-sm px-3 py-2">Flag</button>
+                                    <button class="text-text-secondary hover:text-primary transition-colors text-sm px-3 py-2">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Roommate Post 2 -->
+                        <div class="border border-border rounded-lg p-4 hover:shadow-md transition-all">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User" class="w-10 h-10 rounded-full object-cover" />
+                                    <div>
+                                        <h4 class="font-medium text-text-primary">Seeking Professional Roommate</h4>
+                                        <p class="text-sm text-text-secondary">by Alex Kim • 4 hours ago</p>
+                                    </div>
+                                </div>
+                                <span class="badge-error">Flagged Content</span>
+                            </div>
+                            
+                            <p class="text-text-secondary mb-4 text-sm">
+                                "Young professional seeking roommate for downtown loft. Must be social and enjoy parties. No overnight guests restrictions..."
+                            </p>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-4 text-sm text-text-secondary">
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                        </svg>
+                                        Downtown District
+                                    </span>
+                                    <span class="flex items-center text-error">
+                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+                                        </svg>
+                                        2 reports
+                                    </span>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button class="text-warning hover:text-warning-600 transition-colors text-sm px-3 py-2">Edit Required</button>
+                                    <button class="text-error hover:text-error-600 transition-colors text-sm px-3 py-2">Remove</button>
+                                    <button class="text-text-secondary hover:text-primary transition-colors text-sm px-3 py-2">Investigate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Verification Dashboard & Safety Tools -->
+            <div class="space-y-8">
+                <!-- Verification Dashboard -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-text-primary mb-6">Verification Dashboard</h2>
+                    
+                    <!-- Verification Stats -->
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-text-secondary">Identity Verification</span>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm font-medium">342 pending</span>
+                                <span class="w-3 h-3 bg-warning rounded-full animate-pulse"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-text-secondary">Landlord Credentials</span>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm font-medium">89 pending</span>
+                                <span class="w-3 h-3 bg-accent rounded-full"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-text-secondary">Student Status</span>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm font-medium">156 pending</span>
+                                <span class="w-3 h-3 bg-primary rounded-full"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="space-y-3">
+                        <button class="w-full btn-primary text-sm py-3">Review Pending Documents</button>
+                        <button class="w-full btn-outline text-sm py-3">Send Verification Reminders</button>
+                        <button class="w-full text-text-secondary hover:text-primary transition-colors text-sm py-3 border border-border rounded-lg">Bulk Process Approvals</button>
+                    </div>
+                </div>
+
+                <!-- Safety Monitoring -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-text-primary mb-6">Safety Monitoring</h2>
+                    
+                    <!-- Recent Safety Alerts -->
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3 p-3 bg-error-50 rounded-lg border border-error-200">
+                            <div class="p-1 bg-error-100 rounded-full mt-1">
+                                <svg class="w-3 h-3 text-error" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-error-700">High Priority Alert</p>
+                                <p class="text-xs text-error-600">Multiple reports against user ID: USR-2024-003</p>
+                                <p class="text-xs text-text-muted mt-1">15 minutes ago</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3 p-3 bg-warning-50 rounded-lg border border-warning-200">
+                            <div class="p-1 bg-warning-100 rounded-full mt-1">
+                                <svg class="w-3 h-3 text-warning" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-warning-700">Suspicious Activity</p>
+                                <p class="text-xs text-warning-600">Unusual login pattern detected for landlord account</p>
+                                <p class="text-xs text-text-muted mt-1">2 hours ago</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3 p-3 bg-primary-50 rounded-lg border border-primary-200">
+                            <div class="p-1 bg-primary-100 rounded-full mt-1">
+                                <svg class="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-primary-700">Auto-Reminder Sent</p>
+                                <p class="text-xs text-primary-600">Verification reminder sent to 89 users</p>
+                                <p class="text-xs text-text-muted mt-1">6 hours ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Communication Tools -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-text-primary mb-6">Communication Tools</h2>
+                    
+                    <!-- Quick Message Templates -->
+                    <div class="space-y-3">
+                        <button class="w-full text-left p-3 border border-border rounded-lg hover:bg-background transition-colors">
+                            <p class="text-sm font-medium text-text-primary">Verification Reminder</p>
+                            <p class="text-xs text-text-secondary">Send to users with pending documents</p>
+                        </button>
+                        
+                        <button class="w-full text-left p-3 border border-border rounded-lg hover:bg-background transition-colors">
+                            <p class="text-sm font-medium text-text-primary">Policy Enforcement</p>
+                            <p class="text-xs text-text-secondary">Guidelines violation notification</p>
+                        </button>
+                        
+                        <button class="w-full text-left p-3 border border-border rounded-lg hover:bg-background transition-colors">
+                            <p class="text-sm font-medium text-text-primary">Account Suspension</p>
+                            <p class="text-xs text-text-secondary">Formal suspension notice template</p>
+                        </button>
+                    </div>
+
+                    <!-- Direct Message Interface -->
+                    <div class="mt-6 pt-6 border-t border-border">
+                        <h3 class="text-sm font-medium text-text-primary mb-3">Send Direct Message</h3>
+                        <div class="space-y-3">
+                            <input type="text" placeholder="User ID or Email" class="input-field text-sm" />
+                            <textarea placeholder="Type your message here..." class="input-field text-sm min-h-24 resize-none"></textarea>
+                            <button class="btn-primary w-full text-sm">Send Message</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Summary -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold text-text-primary mb-6">Community Analytics</h2>
+                    
+                    <!-- Key Metrics -->
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-text-secondary">Verification Success Rate</span>
+                            <span class="text-sm font-medium text-success">87.3%</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-text-secondary">Average Processing Time</span>
+                            <span class="text-sm font-medium">2.4 days</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-text-secondary">Community Health Score</span>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm font-medium text-success">Excellent</span>
+                                <div class="w-16 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-success h-2 rounded-full" style="width: 94%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-text-secondary">User Satisfaction</span>
+                            <span class="text-sm font-medium">4.8/5.0</span>
+                        </div>
+                    </div>
+
+                    <!-- View Detailed Report -->
+                    <button class="w-full btn-outline text-sm py-3 mt-6">View Detailed Analytics</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                    <span class="text-lg font-bold">PropertyHub Admin</span>
+                </div>
+                <div class="text-sm text-gray-400">
+                    © 2025 PropertyHub Admin Panel. Secure Community Management.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-admin-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-admin-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // User search functionality
+        document.getElementById('userSearch').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            // In a real app, this would filter the table rows
+            console.log('Searching for:', searchTerm);
+        });
+
+        // Filter functionality
+        document.getElementById('userTypeFilter').addEventListener('change', function() {
+            const filterValue = this.value;
+            // In a real app, this would filter the table rows
+            console.log('Filtering by user type:', filterValue);
+        });
+
+        document.getElementById('verificationStatus').addEventListener('change', function() {
+            const statusFilter = this.value;
+            // In a real app, this would filter the table rows
+            console.log('Filtering by verification status:', statusFilter);
+        });
+
+        // Simulate real-time updates
+        function updateStats() {
+            // In a real app, this would fetch updated stats from the server
+            console.log('Updating real-time statistics...');
+        }
+
+        // Update stats every 30 seconds
+        setInterval(updateStats, 30000);
+
+        // Table row interactions
+        document.querySelectorAll('#userTableBody tr').forEach(row => {
+            row.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'BUTTON') {
+                    // Highlight selected row
+                    document.querySelectorAll('#userTableBody tr').forEach(r => r.classList.remove('bg-primary-50'));
+                    this.classList.add('bg-primary-50');
+                }
+            });
+        });
+
+        // Safety alert animations
+        document.querySelectorAll('.animate-pulse').forEach(element => {
+            setInterval(() => {
+                element.style.opacity = element.style.opacity === '0.5' ? '1' : '0.5';
+            }, 1000);
+        });
+
+        // Enhanced user management functionality
+        function approveUser(userId) {
+            console.log('Approving user:', userId);
+            // In a real app, this would make an API call
+        }
+
+        function suspendUser(userId) {
+            console.log('Suspending user:', userId);
+            // In a real app, this would make an API call
+        }
+
+        function reviewUser(userId) {
+            console.log('Reviewing user:', userId);
+            // In a real app, this would open a detailed review modal
+        }
+
+        // Roommate post moderation
+        function approvePost(postId) {
+            console.log('Approving roommate post:', postId);
+            // In a real app, this would make an API call
+        }
+
+        function flagPost(postId) {
+            console.log('Flagging roommate post:', postId);
+            // In a real app, this would make an API call
+        }
+
+        // Verification processing
+        function processVerifications() {
+            console.log('Processing pending verifications...');
+            // In a real app, this would handle bulk verification processing
+        }
+
+        // Add smooth animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards for animation
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Housing Hub - PropertyHub</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fpropertyhu7706back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="homepage.html" class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                        </svg>
+                        <span class="text-xl font-bold text-primary">PropertyHub</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-text-secondary hover:text-primary transition-smooth">Home</a>
+                    <a href="property_listing_detail.html" class="text-text-secondary hover:text-primary transition-smooth">Properties</a>
+                    <a href="student_housing_hub.html" class="text-primary font-semibold">Student Housing</a>
+                    <a href="roommate_finder.html" class="text-text-secondary hover:text-primary transition-smooth">Find Roommates</a>
+                    <a href="owner_dashboard.html" class="text-text-secondary hover:text-primary transition-smooth">List Property</a>
+                    <a href="user_profile_dashboard.html" class="btn-primary">Sign In</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-text-secondary hover:text-primary">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-border">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="homepage.html" class="block px-3 py-2 text-text-secondary hover:text-primary">Home</a>
+                <a href="property_listing_detail.html" class="block px-3 py-2 text-text-secondary hover:text-primary">Properties</a>
+                <a href="student_housing_hub.html" class="block px-3 py-2 text-primary font-semibold">Student Housing</a>
+                <a href="roommate_finder.html" class="block px-3 py-2 text-text-secondary hover:text-primary">Find Roommates</a>
+                <a href="owner_dashboard.html" class="block px-3 py-2 text-text-secondary hover:text-primary">List Property</a>
+                <a href="user_profile_dashboard.html" class="block px-3 py-2 text-primary font-semibold">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Students studying in modern campus housing" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
+                Your Perfect
+                <span class="text-gradient block">Student Home Awaits</span>
+            </h1>
+            <p class="text-xl text-white/90 mb-12 max-w-2xl mx-auto animate-slide-up">
+                Discover verified student housing near your campus with roommate matching, study-friendly spaces, and student-focused amenities.
+            </p>
+            
+            <!-- Student Search Interface -->
+            <div class="bg-surface/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-xl animate-scale-in">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <select class="input-field">
+                            <option>Select Your University</option>
+                            <option>University of California, Berkeley</option>
+                            <option>Stanford University</option>
+                            <option>UCLA</option>
+                            <option>USC</option>
+                            <option>San Francisco State University</option>
+                            <option>Santa Clara University</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select class="input-field">
+                            <option>Distance from Campus</option>
+                            <option>Walking Distance (0-0.5 mi)</option>
+                            <option>Biking Distance (0.5-2 mi)</option>
+                            <option>Transit Accessible (2-5 mi)</option>
+                            <option>Driving Distance (5+ mi)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select class="input-field">
+                            <option>Budget Range</option>
+                            <option>$500 - $800</option>
+                            <option>$800 - $1,200</option>
+                            <option>$1,200 - $1,800</option>
+                            <option>$1,800 - $2,500</option>
+                            <option>$2,500+</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Student-Specific Filters -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                    <label class="flex items-center space-x-2 text-sm">
+                        <input type="checkbox" class="rounded border-border text-accent focus:ring-accent" />
+                        <span>Furnished</span>
+                    </label>
+                    <label class="flex items-center space-x-2 text-sm">
+                        <input type="checkbox" class="rounded border-border text-accent focus:ring-accent" />
+                        <span>Utilities Included</span>
+                    </label>
+                    <label class="flex items-center space-x-2 text-sm">
+                        <input type="checkbox" class="rounded border-border text-accent focus:ring-accent" />
+                        <span>Study Spaces</span>
+                    </label>
+                    <label class="flex items-center space-x-2 text-sm">
+                        <input type="checkbox" class="rounded border-border text-accent focus:ring-accent" />
+                        <span>Roommate Friendly</span>
+                    </label>
+                </div>
+                
+                <button class="btn-primary w-full md:w-auto px-12 py-4 text-lg">
+                    <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                    Find Student Housing
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- University Partnerships -->
+    <section class="py-16 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl font-bold text-text-primary mb-4">Trusted by Top Universities</h2>
+                <p class="text-text-secondary">Official housing partner with leading educational institutions</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                        </svg>
+                    </div>
+                    <div class="text-sm font-semibold text-text-primary">UC Berkeley</div>
+                    <div class="verification-badge mt-1">
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Verified Partner
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                        </svg>
+                    </div>
+                    <div class="text-sm font-semibold text-text-primary">Stanford</div>
+                    <div class="verification-badge mt-1">
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Verified Partner
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-8 h-8 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                        </svg>
+                    </div>
+                    <div class="text-sm font-semibold text-text-primary">UCLA</div>
+                    <div class="verification-badge mt-1">
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Verified Partner
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                        </svg>
+                    </div>
+                    <div class="text-sm font-semibold text-text-primary">USC</div>
+                    <div class="verification-badge mt-1">
+                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Verified Partner
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Student Properties -->
+    <section class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+                        Student-Friendly Properties
+                    </h2>
+                    <p class="text-xl text-text-secondary">
+                        Verified housing designed with students in mind
+                    </p>
+                </div>
+                <a href="property_listing_detail.html" class="btn-outline hidden md:inline-flex">
+                    View All Properties
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Student Property Card 1 -->
+                <div class="property-card">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Modern student apartment with study area" class="w-full h-48 object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'; this.onerror=null;" />
+                        <div class="absolute top-4 left-4">
+                            <div class="verification-badge bg-surface">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Student Verified
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-accent text-white px-2 py-1 rounded text-xs font-medium">Furnished</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold">Berkeley Student Commons</h3>
+                            <span class="text-xl font-bold text-primary">$1,250</span>
+                        </div>
+                        <p class="text-text-secondary text-sm mb-4">Near UC Berkeley • 2 bed, 1 bath • Furnished</p>
+                        
+                        <!-- Student-Specific Features -->
+                        <div class="grid grid-cols-2 gap-2 mb-4">
+                            <div class="flex items-center text-xs text-text-secondary">
+                                <svg class="w-4 h-4 mr-1 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                </svg>
+                                0.3 mi to Campus
+                            </div>
+                            <div class="flex items-center text-xs text-text-secondary">
+                                <svg class="w-4 h-4 mr-1 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                                Study Lounge
+                            </div>
+                            <div class="flex items-center text-xs text-text-secondary">
+                                <svg class="w-4 h-4 mr-1 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+                                </svg>
+                                High-Speed WiFi
+                            </div>
+                            <div class="flex items-center text-xs text-text-secondary">
+                                <svg class="w-4 h-4 mr-1 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                </svg>
+                                Roommate Match
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-sm text-success">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Utilities Included
+                            </div>
+                            <div class="flex items-center text-accent text-sm">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                4.9 Student Rating
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Student Property Card 2 -->
+                <div class="property-card">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2058&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Shared student housing with common areas" class="w-full h-48 object-cover" loading="lazy" onerror="this.src='https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                        <div class="absolute top-4 left-4">
+                            <div class="verification-badge bg-surface">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Student Verified
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-secondary text-white px-2 py-1 rounded text-xs font-medium">Shared</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold">Stanford Co-Living Space</h3>
+                            <span class="text-xl font-bold text-primary">$950</span>
+                        </div>
+                        <p class="text-text-secondary text-sm mb-4">Near Stanford • Shared room • All amenities</p>
+                        
+                        <div class="grid grid-cols-2 gap-2 mb-4">
+                            <div class="flex items-center text-xs text-text-secondary">
+                                <svg class="w-4 h-4 mr-1 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                </svg>
+                                0.8 mi to Campus
+                            </div>
+                            <div class="flex items-center text-xs text-text-secondary">
+                                <svg class="w-4 h-4 mr-1 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                                Kitchen Access
+                            </div>
+                            <div class="flex items-center text-xs text-text-secondary">
+                                <svg class="w-4 h-4 mr-1 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                Laundry Included
+                            </div>
+                            <div class="flex items-center text-xs text-text-secondary">
+                                <svg class="w-4 h-4 mr-1 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                </svg>
+                                Social Community
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-sm text-success">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Academic Year Lease
+                            </div>
+                            <div class="flex items-center text-accent text-sm">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                4.7 Student Rating
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Student Property Card 3 -->
+                <div class="property-card">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Student studio with workspace" class="w-full h-48 object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'; this.onerror=null;" />
+                        <div class="absolute top-4 left-4">
+                            <div class="verification-badge bg-surface">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Student Verified
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-primary text-white px-2 py-1 rounded text-xs font-medium">Studio</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-semibold">UCLA Study Studio</h3>
+                            <span class="text-xl font-bold text-primary">$1,400</span>
+                        </div>
+                        <p class="text-text-secondary text-sm mb-4">Near UCLA • Studio • Private workspace</p>
+                        
+                        <div class="grid grid-cols-2 gap-2 mb-4">
+                            <div class="flex items-center text-xs text-text-secondary">
+                                <svg class="w-4 h-4 mr-1 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                </svg>
+                                0.2 mi to Campus
+                            </div>
+                            <div class="flex items-center text-xs text-text-secondary">
+                                <svg class="w-4 h-4 mr-1 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                                Private Workspace
+                            </div>
+                            <div class="flex items-center text-xs text-text-secondary">
+                                <svg class="w-4 h-4 mr-1 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+                                </svg>
+                                Fiber Internet
+                            </div>
+                            <div class="flex items-center text-xs text-text-secondary">
+                                <svg class="w-4 h-4 mr-1 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                                </svg>
+                                Natural Light
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center text-sm text-success">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Quiet Hours Policy
+                            </div>
+                            <div class="flex items-center text-accent text-sm">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                4.8 Student Rating
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 md:hidden">
+                <a href="property_listing_detail.html" class="btn-outline">View All Properties</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrated Roommate Finder -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+                    Find Your Perfect Study Buddy
+                </h2>
+                <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+                    Connect with compatible roommates who share your academic goals and lifestyle preferences
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <!-- Active Roommate Posts -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-6 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        Active Roommate Seekers
+                    </h3>
+                    
+                    <!-- Roommate Post 1 -->
+                    <div class="card p-6 mb-4">
+                        <div class="flex items-start space-x-4">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Emma Chen" class="w-12 h-12 rounded-full object-cover" loading="lazy" onerror="this.src='https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-semibold">Emma Chen</h4>
+                                    <div class="flex items-center bg-secondary-100 text-secondary-700 px-2 py-1 rounded-full text-xs">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        92% Match
+                                    </div>
+                                </div>
+                                <p class="text-sm text-text-secondary mb-2">Computer Science • UC Berkeley • Budget: $800-1200</p>
+                                <p class="text-sm mb-3">"Looking for a study-focused roommate near campus. I'm clean, quiet during study hours, and love cooking together!"</p>
+                                
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="px-2 py-1 bg-accent-100 text-accent-700 rounded text-xs">Early Bird</span>
+                                    <span class="px-2 py-1 bg-primary-100 text-primary-700 rounded text-xs">Non-Smoker</span>
+                                    <span class="px-2 py-1 bg-secondary-100 text-secondary-700 rounded text-xs">Study Group</span>
+                                </div>
+                                
+                                <button class="btn-primary text-sm px-4 py-2">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Roommate Post 2 -->
+                    <div class="card p-6">
+                        <div class="flex items-start space-x-4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Alex Rodriguez" class="w-12 h-12 rounded-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-semibold">Alex Rodriguez</h4>
+                                    <div class="flex items-center bg-accent-100 text-accent-700 px-2 py-1 rounded-full text-xs">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        87% Match
+                                    </div>
+                                </div>
+                                <p class="text-sm text-text-secondary mb-2">Business Major • Stanford • Budget: $1000-1500</p>
+                                <p class="text-sm mb-3">"Graduate student seeking responsible roommate. I value work-life balance and enjoy weekend social activities."</p>
+                                
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="px-2 py-1 bg-primary-100 text-primary-700 rounded text-xs">Social</span>
+                                    <span class="px-2 py-1 bg-secondary-100 text-secondary-700 rounded text-xs">Gym Buddy</span>
+                                    <span class="px-2 py-1 bg-accent-100 text-accent-700 rounded text-xs">Pet Friendly</span>
+                                </div>
+                                
+                                <button class="btn-primary text-sm px-4 py-2">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Compatibility Matching -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-6 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Create Your Roommate Profile
+                    </h3>
+                    
+                    <div class="card p-6">
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Your University</label>
+                                <select class="input-field">
+                                    <option>Select your university</option>
+                                    <option>UC Berkeley</option>
+                                    <option>Stanford University</option>
+                                    <option>UCLA</option>
+                                    <option>USC</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Budget Range</label>
+                                <select class="input-field">
+                                    <option>Select budget range</option>
+                                    <option>$500 - $800</option>
+                                    <option>$800 - $1,200</option>
+                                    <option>$1,200 - $1,800</option>
+                                    <option>$1,800+</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Study Habits</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <label class="flex items-center space-x-2 text-sm">
+                                        <input type="checkbox" class="rounded border-border text-accent focus:ring-accent" />
+                                        <span>Early Bird</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-sm">
+                                        <input type="checkbox" class="rounded border-border text-accent focus:ring-accent" />
+                                        <span>Night Owl</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-sm">
+                                        <input type="checkbox" class="rounded border-border text-accent focus:ring-accent" />
+                                        <span>Study Groups</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-sm">
+                                        <input type="checkbox" class="rounded border-border text-accent focus:ring-accent" />
+                                        <span>Quiet Study</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Lifestyle Preferences</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <label class="flex items-center space-x-2 text-sm">
+                                        <input type="checkbox" class="rounded border-border text-accent focus:ring-accent" />
+                                        <span>Social</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-sm">
+                                        <input type="checkbox" class="rounded border-border text-accent focus:ring-accent" />
+                                        <span>Non-Smoker</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-sm">
+                                        <input type="checkbox" class="rounded border-border text-accent focus:ring-accent" />
+                                        <span>Pet Friendly</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 text-sm">
+                                        <input type="checkbox" class="rounded border-border text-accent focus:ring-accent" />
+                                        <span>Gym Buddy</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary w-full">
+                                Create Profile & Find Matches
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="mt-6 text-center">
+                        <a href="roommate_finder.html" class="text-primary hover:text-primary-700 font-medium">
+                            View Full Roommate Finder →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Resources -->
+    <section class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+                    Student Housing Resources
+                </h2>
+                <p class="text-xl text-text-secondary">
+                    Everything you need to know about student housing
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Resource 1 -->
+                <div class="card p-6 text-center hover:shadow-xl transition-smooth">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">Student Rights Guide</h3>
+                    <p class="text-text-secondary text-sm mb-4">Know your rights as a student tenant and protect yourself from unfair practices.</p>
+                    <button class="text-primary font-medium text-sm hover:text-primary-700">Learn More →</button>
+                </div>
+                
+                <!-- Resource 2 -->
+                <div class="card p-6 text-center hover:shadow-xl transition-smooth">
+                    <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">Budget Calculator</h3>
+                    <p class="text-text-secondary text-sm mb-4">Calculate your total housing costs including utilities, food, and transportation.</p>
+                    <button class="text-primary font-medium text-sm hover:text-primary-700">Calculate →</button>
+                </div>
+                
+                <!-- Resource 3 -->
+                <div class="card p-6 text-center hover:shadow-xl transition-smooth">
+                    <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">Academic Calendar</h3>
+                    <p class="text-text-secondary text-sm mb-4">Plan your lease around academic terms and avoid summer housing gaps.</p>
+                    <button class="text-primary font-medium text-sm hover:text-primary-700">View Calendar →</button>
+                </div>
+                
+                <!-- Resource 4 -->
+                <div class="card p-6 text-center hover:shadow-xl transition-smooth">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">Moving Guide</h3>
+                    <p class="text-text-secondary text-sm mb-4">Complete checklist for out-of-state students moving to California.</p>
+                    <button class="text-primary font-medium text-sm hover:text-primary-700">Get Guide →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Success Stories -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+                    Student Success Stories
+                </h2>
+                <p class="text-xl text-text-secondary">
+                    Real students, real experiences, real success
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Success Story 1 -->
+                <div class="card p-6 hover:shadow-xl transition-smooth">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Jessica Park" class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy" onerror="this.src='https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                        <div>
+                            <h4 class="font-semibold">Jessica Park</h4>
+                            <p class="text-sm text-text-secondary">UC Berkeley, Junior</p>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary mb-4">"Found my dream apartment just 2 blocks from campus through PropertyHub. The student verification process made me feel safe, and my roommate match has been perfect!"</p>
+                    <div class="flex items-center text-accent text-sm">
+                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span>5.0 Rating</span>
+                    </div>
+                </div>
+                
+                <!-- Success Story 2 -->
+                <div class="card p-6 hover:shadow-xl transition-smooth">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Michael Thompson" class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                        <div>
+                            <h4 class="font-semibold">Michael Thompson</h4>
+                            <p class="text-sm text-text-secondary">Stanford, Graduate Student</p>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary mb-4">"As an international student, PropertyHub's resources helped me understand my rights and find housing before I even arrived in the US. The academic calendar planning was invaluable!"</p>
+                    <div class="verification-badge">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        International Student
+                    </div>
+                </div>
+                
+                <!-- Success Story 3 -->
+                <div class="card p-6 hover:shadow-xl transition-smooth">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sarah Kim" class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy" onerror="this.src='https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                        <div>
+                            <h4 class="font-semibold">Sarah Kim</h4>
+                            <p class="text-sm text-text-secondary">UCLA, Sophomore</p>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary mb-4">"The compatibility matching system connected me with roommates who share my study habits and lifestyle. We've created the perfect study environment together!"</p>
+                    <div class="flex items-center text-secondary text-sm">
+                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <span>Perfect Roommate Match</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-accent text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-accent-400 to-accent-600"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                Ready to Find Your Student Home?
+            </h2>
+            <p class="text-xl text-accent-100 mb-12 max-w-2xl mx-auto">
+                Join thousands of students who found their perfect housing and roommate matches through PropertyHub's verified student community.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="property_listing_detail.html" class="bg-white text-accent px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-smooth">
+                    Browse Student Housing
+                </a>
+                <a href="roommate_finder.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-accent transition-smooth">
+                    Find Roommates
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                        </svg>
+                        <span class="text-xl font-bold">PropertyHub</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Creating verified communities for property owners and tenants. Where home-finding is made human through trust, safety, and genuine connections.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-white transition-smooth">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-white transition-smooth">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-white transition-smooth">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="property_listing_detail.html" class="text-gray-400 hover:text-white transition-smooth">Browse Properties</a></li>
+                        <li><a href="student_housing_hub.html" class="text-gray-400 hover:text-white transition-smooth">Student Housing</a></li>
+                        <li><a href="roommate_finder.html" class="text-gray-400 hover:text-white transition-smooth">Find Roommates</a></li>
+                        <li><a href="owner_dashboard.html" class="text-gray-400 hover:text-white transition-smooth">List Property</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white transition-smooth">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white transition-smooth">Safety Tips</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white transition-smooth">Contact Us</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white transition-smooth">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 PropertyHub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button (Mobile) -->
+    <div class="fixed bottom-6 right-6 md:hidden z-50">
+        <button class="w-14 h-14 bg-accent text-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-600 transition-smooth">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.card, .property-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Filter interactions
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                // Add visual feedback for filter changes
+                if (this.checked) {
+                    this.parentElement.classList.add('bg-accent-50');
+                } else {
+                    this.parentElement.classList.remove('bg-accent-50');
+                }
+            });
+        });
+
+        // University selection handler
+        document.querySelectorAll('select').forEach(select => {
+            select.addEventListener('change', function() {
+                if (this.value !== this.options[0].value) {
+                    this.classList.add('border-accent');
+                } else {
+                    this.classList.remove('border-accent');
+                }
+            });
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
